@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 # https://playwright.dev/docs/locators
 # https://stackoverflow.com/questions/75151754/how-can-i-select-an-element-by-id
 # https://stackoverflow.com/questions/75144059/python-playwright-start-maximized-window
+# https://devhints.io/xpath#class-check
 
 # Use a context manager. 
 # with sync_playwright() as playwright > This will close our browser when our code is finished running 
@@ -36,6 +37,11 @@ with sync_playwright() as playwright:
     page.wait_for_timeout(2000)
     # Explicitly click on the "Search" button on upper right hand side of page
     page.locator('//*[@id="search-desktop"]/div/button[1]').click()
-    page.wait_for_timeout(2000)
+    page.wait_for_timeout(5000)
+    target_product_url = 'https://www.perthmint.com/shop/collector-coins/coins/james-bond-skyfall-2022-1-2oz-silver-proof-coloured-coin/'
+    # page.locator('//*[@href="'+target_product_url+'"]').click()
+    # TODO This kind of XPath locator will likely break later.  We need to improve it for easier maintenance
+    page.locator('//*[@id="panel-Products"]/div[2]/div[1]/div/div[2]/div[1]/h3/a').click()
+    page.wait_for_timeout(5000)
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()
