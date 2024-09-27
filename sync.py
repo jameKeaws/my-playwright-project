@@ -7,6 +7,8 @@ from playwright.sync_api import sync_playwright
 # https://stackoverflow.com/questions/75151754/how-can-i-select-an-element-by-id
 # https://stackoverflow.com/questions/75144059/python-playwright-start-maximized-window
 # https://devhints.io/xpath#class-check
+# https://www.roborabbit.com/blog/xpath-cheat-sheet-a-quick-reference-to-essential-xpath-expressions/#using-operators-to-combine-expressions
+# https://stackoverflow.com/questions/22571267/how-to-verify-an-xpath-expression-in-chrome-developers-tool-or-firefoxs-firebug
 
 # Use a context manager. 
 # with sync_playwright() as playwright > This will close our browser when our code is finished running 
@@ -38,10 +40,13 @@ with sync_playwright() as playwright:
     # Explicitly click on the "Search" button on upper right hand side of page
     page.locator('//*[@id="search-desktop"]/div/button[1]').click()
     page.wait_for_timeout(5000)
-    target_product_url = 'https://www.perthmint.com/shop/collector-coins/coins/james-bond-skyfall-2022-1-2oz-silver-proof-coloured-coin/'
+    # target_product_url = 'https://www.perthmint.com/shop/collector-coins/coins/james-bond-skyfall-2022-1-2oz-silver-proof-coloured-coin/'
     # page.locator('//*[@href="'+target_product_url+'"]').click()
     # TODO This kind of XPath locator will likely break later.  We need to improve it for easier maintenance
     page.locator('//*[@id="panel-Products"]/div[2]/div[1]/div/div[2]/div[1]/h3/a').click()
     page.wait_for_timeout(5000)
+    # Now that we are able to navigate to specific product detail page, let us click on "Add to cart" button
+    page.locator('//*[@id="mainContent"]/div[1]/div[2]/div/div/div[2]/div[6]/div[1]/span/button').click()
+    page.wait_for_timeout(10000)
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()
