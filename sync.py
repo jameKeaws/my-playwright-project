@@ -3,6 +3,7 @@ from pages.homepage import HomePage
 from pages.main_navigation import MainNavigation
 from pages.product_card import ProductCard
 from pages.quick_cart import QuickCart
+from pages.country_and_currency import CountryCurrencySettings
 import re
 # References
 # https://playwright.dev/python/docs/api/class-playwright
@@ -73,5 +74,10 @@ with sync_playwright() as playwright:
     quick_cart.close_quick_cart(wait_time=3000)
     # Open 'Country and currency settings'
     main_navigation.open_country_currency_settings(wait_time=3000)
+    
+    # Close 'Country and currency settings'
+    country_currency_settings = CountryCurrencySettings(page)
+    country_currency_settings.close_country_and_currency_settings(wait_time=3000)
+    
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()
