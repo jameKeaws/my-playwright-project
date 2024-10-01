@@ -37,7 +37,6 @@ class MainNavigation():
         self.page.get_by_role("button", name=re.compile("open cart$", re.IGNORECASE)).click()
         self.page.wait_for_timeout(wait_time)
     
-    # Regex Reference > https://www.w3schools.com/python/python_regex.asp
     # Functionality for opening 'Country and currency settings' via the main navigation panel
     def open_country_currency_settings(self, wait_time=3000):
         print("MainNavigation - open_country_currency_settings()")
