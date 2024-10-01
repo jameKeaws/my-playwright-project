@@ -30,8 +30,16 @@ class MainNavigation():
         # page.wait_for_timeout(5000)
         self.page.locator(type(self).search_bar_button_locator).click()
         self.page.wait_for_timeout(wait_time)
-        
-    def click_quick_cart(self, wait_time=3000):
-        print("MainNavigation - click_quick_cart()")
+    
+    # Functionality for opening Cart (Quick cart icon) via the main navigation panel
+    def open_quick_cart(self, wait_time=3000):
+        print("MainNavigation - open_quick_cart()")
         self.page.get_by_role("button", name=re.compile("open cart$", re.IGNORECASE)).click()
+        self.page.wait_for_timeout(wait_time)
+    
+    # Regex Reference > https://www.w3schools.com/python/python_regex.asp
+    # Functionality for opening 'Country and currency settings' via the main navigation panel
+    def open_country_currency_settings(self, wait_time=3000):
+        print("MainNavigation - open_country_currency_settings()")
+        self.page.get_by_role("button", name=re.compile("^Change country and currency settings", re.IGNORECASE)).click()
         self.page.wait_for_timeout(wait_time)

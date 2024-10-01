@@ -2,8 +2,6 @@ from playwright.sync_api import sync_playwright
 import re
 
 class QuickCart():
-    quick_cart_close_button = ''
-    
     def __init__(self, page):
         self.page = page
     

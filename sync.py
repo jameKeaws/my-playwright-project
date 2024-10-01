@@ -64,9 +64,14 @@ with sync_playwright() as playwright:
     page.wait_for_timeout(5000)
     # page.screenshot(path="playwright_sync_demo.png")
     
+    # Close the 'Quick cart' after adding an item to the cart
     quick_cart = QuickCart(page)
     quick_cart.close_quick_cart(wait_time=3000)
-    
-    main_navigation.click_quick_cart(wait_time=3000)
+    # Open the 'Quick cart'
+    main_navigation.open_quick_cart(wait_time=3000)
+    # Close the 'Quick cart'
+    quick_cart.close_quick_cart(wait_time=3000)
+    # Open 'Country and currency settings'
+    main_navigation.open_country_currency_settings(wait_time=3000)
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()
