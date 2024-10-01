@@ -1,6 +1,9 @@
 from playwright.sync_api import sync_playwright
 from pages.homepage import HomePage
 from pages.main_navigation import MainNavigation
+from pages.product_card import ProductCard
+from pages.quick_cart import QuickCart
+import re
 # References
 # https://playwright.dev/python/docs/api/class-playwright
 # https://www.youtube.com/watch?v=H2-5ecFwHHQ
@@ -25,7 +28,8 @@ with sync_playwright() as playwright:
     context = browser.new_context(no_viewport=True)
     # Create a new page in a pristine context. Create a page object which we could interact with
     page = context.new_page()
-    # TODO Start using Page object model for HomePage
+    # page.get_by_role
+    
     homepage = HomePage(page)
     # Navigate to website we want to test. For demonstration purposes we are using The Perth Mint
     homepage.navigate('https://www.perthmint.com/')
@@ -45,18 +49,24 @@ with sync_playwright() as playwright:
     # Enter item or product to search in "What are you looking for?" text field.
     # page.locator('//*[@id="search-desktop"]/div/input').fill(value_to_search)
     # page.wait_for_timeout(2000)
-    main_navigation.input_search(value_to_search='James Bond Skyfall', wait_time=2000)
+    main_navigation.input_search(value_to_search='James Bond', wait_time=2000)
     
     # Explicitly click on the "Search" button on upper right hand side of page
     # page.locator('//*[@id="search-desktop"]/div/button[1]').click()
     # page.wait_for_timeout(5000)
     main_navigation.click_search_bar_button(wait_time=5000)
     
-    # TODO This kind of XPath locator will likely break later.  We need to improve it for easier maintenance
-    page.locator('//*[@id="panel-Products"]/div[2]/div[1]/div/div[2]/div[1]/h3/a').click()
-    page.wait_for_timeout(5000)
+    product_card = ProductCard(page)
+    product_card.click_product_card_url(wait_time=5000)
+    
     # Now that we are able to navigate to specific product detail page, let us click on "Add to cart" button
     page.locator('//*[@id="mainContent"]/div[1]/div[2]/div/div/div[2]/div[6]/div[1]/span/button').click()
-    page.wait_for_timeout(10000)
+    page.wait_for_timeout(5000)
+    # page.screenshot(path="playwright_sync_demo.png")
+    
+    quick_cart = QuickCart(page)
+    quick_cart.close_quick_cart(wait_time=3000)
+    
+    main_navigation.click_quick_cart(wait_time=3000)
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()
