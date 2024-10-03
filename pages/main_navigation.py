@@ -5,6 +5,8 @@ class MainNavigation():
     search_icon_locator = '.header__sub-nav-item.header__nav-item--search'
     search_text_field_locator = '//*[@id="search-desktop"]/div/input'
     search_bar_button_locator = '//*[@id="search-desktop"]/div/button[1]'
+    login_register_regex = 'login or register'
+    logo_in_header_locator = '//*[@id="header-navigation--desktop"]/div/div/div/a/img'
     
     def __init__(self, page):
         self.page = page
@@ -30,10 +32,18 @@ class MainNavigation():
         # page.wait_for_timeout(5000)
         self.page.locator(type(self).search_bar_button_locator).click()
         self.page.wait_for_timeout(wait_time)
+        
+    # Functionality for opening the 'Login/Register' via the main navigation panel
+    def open_login_register_panel(self, wait_time=3000):
+        print("MainNavigation - open_login_register_panel()")
+        # RegEx starts with
+        self.page.get_by_role("button", name=re.compile("^login or register", re.IGNORECASE)).click()
+        self.page.wait_for_timeout(wait_time)
     
     # Functionality for opening Cart (Quick cart icon) via the main navigation panel
     def open_quick_cart(self, wait_time=3000):
         print("MainNavigation - open_quick_cart()")
+        # RegEx ends with
         self.page.get_by_role("button", name=re.compile("open cart$", re.IGNORECASE)).click()
         self.page.wait_for_timeout(wait_time)
     
@@ -41,4 +51,10 @@ class MainNavigation():
     def open_country_currency_settings(self, wait_time=3000):
         print("MainNavigation - open_country_currency_settings()")
         self.page.get_by_role("button", name=re.compile("^Change country and currency settings", re.IGNORECASE)).click()
+        self.page.wait_for_timeout(wait_time)
+        
+    # Functionality for reloading the default home page by clicking on company logo
+    def load_default_homepage(self, wait_time=3000):
+        print("MainNavigation - load_default_homepage()")
+        self.page.locator(type(self).logo_in_header_locator).click()
         self.page.wait_for_timeout(wait_time)

@@ -4,12 +4,15 @@ from pages.main_navigation import MainNavigation
 from pages.product_card import ProductCard
 from pages.quick_cart import QuickCart
 from pages.country_and_currency import CountryCurrencySettings
+from pages.login_register_panel import LoginRegisterPanel
+from pages.login_page import LoginPage
+from pages.registration_page import RegistrationPage
 import re
 # References
 # https://playwright.dev/python/docs/api/class-playwright
 # https://www.youtube.com/watch?v=H2-5ecFwHHQ
 # https://www.youtube.com/watch?v=FK_5SQPq6nY&list=PLYDwWPRvXB8_W56h2C1z5zrlnAlvqpJ6A
-# https://playwright.dev/docs/locators
+# https://playwright.dev/python/docs/locators
 # https://stackoverflow.com/questions/75151754/how-can-i-select-an-element-by-id
 # https://stackoverflow.com/questions/75144059/python-playwright-start-maximized-window
 # https://devhints.io/xpath#class-check
@@ -78,6 +81,29 @@ with sync_playwright() as playwright:
     # Close 'Country and currency settings'
     country_currency_settings = CountryCurrencySettings(page)
     country_currency_settings.close_country_and_currency_settings(wait_time=3000)
+    # Open 'Login / Register' panel
+    main_navigation.open_login_register_panel(wait_time=3000)
+    login_register_panel = LoginRegisterPanel(page)
+    # Close 'Login / Register' panel
+    login_register_panel.close_login_register_panel(wait_time=3000)
+    # Open 'Login / Register' panel again
+    main_navigation.open_login_register_panel(wait_time=3000)
+    # Navigate to "Login" page
+    login_register_panel.navigate_to_account_login(wait_time=3000)
+    login_page = LoginPage(page)
+    # Enter test account email address
+    login_page.input_email_address(email_address="jd@perthmint.com", wait_time=3000)
+    login_page.input_password(password="not_legit_password", wait_time=3000)
+    login_page.click_login(wait_time=3000)
+    # At "Login" page, click on Perth Mint logo to navigate back to 'Home page'
+    login_page.navigate_to_homepage(wait_time=3000)
+    # From "Home screen" click on "Login/Register" again
+    main_navigation.open_login_register_panel(wait_time=3000)
+    # On the "Login/Register" panel, click on "Register"
+    login_register_panel.navigate_to_account_registration(wait_time=3000)
+    # On the 'Account registration page', click on Perth Mint logo to navigate back to 'Home page'
+    registration_page = RegistrationPage(page)
+    registration_page.navigate_to_homepage(wait_time=3000)
     
     page.screenshot(path="playwright_sync_demo.png")
     browser.close()

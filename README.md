@@ -32,10 +32,14 @@ https://www.youtube.com/watch?v=FK_5SQPq6nY&list=PLYDwWPRvXB8_W56h2C1z5zrlnAlvqp
 <!-- How to select an element by id in Playwright -->
 https://stackoverflow.com/questions/75151754/how-can-i-select-an-element-by-id
 
-### Playwright Locators
-https://playwright.dev/docs/locators
+### Playwright Locators for Python
+https://playwright.dev/python/docs/locators
 
 <!-- References for RegEx -->
 ### RegEx in Python
 https://stackoverflow.com/questions/9012008/pythons-re-return-true-if-string-contains-regex-pattern
 https://www.w3schools.com/python/python_regex.asp
+
+### For Future Exploration
+<!-- Behave with Playwright -->
+https://wikomtech.com/blog/create-a-behavior-driven-development-bdd-framework-with-playwright-and-python/
