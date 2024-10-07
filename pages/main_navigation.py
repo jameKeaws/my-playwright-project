@@ -58,3 +58,8 @@ class MainNavigation():
         print("MainNavigation - load_default_homepage()")
         self.page.locator(type(self).logo_in_header_locator).click()
         self.page.wait_for_timeout(wait_time)
+        
+    def open_collector_coins_menu(self, wait_time=3000):
+        print("MainNavigation - open_collector_coins_menu()")
+        self.page.get_by_role("button", name=re.compile("^Collector coins", re.IGNORECASE)).click()
+        self.page.wait_for_timeout(wait_time)

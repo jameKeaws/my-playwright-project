@@ -39,6 +39,7 @@ https://playwright.dev/python/docs/locators
 ### RegEx in Python
 https://stackoverflow.com/questions/9012008/pythons-re-return-true-if-string-contains-regex-pattern
 https://www.w3schools.com/python/python_regex.asp
+https://stackoverflow.com/questions/21405267/how-to-use-regex-in-xpath-contains-function
 
 ### For Future Exploration
 <!-- Behave with Playwright -->
