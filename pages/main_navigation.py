@@ -2,7 +2,8 @@ from playwright.sync_api import sync_playwright
 import re
 
 class MainNavigation():
-    search_icon_locator = '.header__sub-nav-item.header__nav-item--search'
+    # search_icon_locator = '.header__sub-nav-item.header__nav-item--search'
+    search_icon_locator = '//*[@id="header-navigation--desktop"]/div/div/nav/ul[2]/li[5]/button'
     search_text_field_locator = '//*[@id="search-desktop"]/div/input'
     search_bar_button_locator = '//*[@id="search-desktop"]/div/button[1]'
     login_register_regex = 'login or register'
@@ -13,10 +14,10 @@ class MainNavigation():
         
     def click_search_icon(self, wait_time=2000):
         print("MainNavigation - click_search_icon()")
-        # Below is how it was originally called without Page object model
         # We are locating by CSS selector where classes are as specified below
         # page.locator('.header__sub-nav-item.header__nav-item--search').click()
         self.page.locator(type(self).search_icon_locator).click()
+        self.page.wait_for_timeout(wait_time)
         
     def input_search(self, value_to_search='James', wait_time=2000):
         print("MainNavigation - input_search()")

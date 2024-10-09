@@ -14,7 +14,7 @@ class HomePage():
     # https://stackoverflow.com/questions/25577578/can-i-access-a-class-variable-from-an-instance
     def click_accept_cookies(self, wait_time=2000):
         print("HomePage - click_accept_cookies()")
-        # Below is how it was originally called without Page object model
+        # We are locating by CSS selector where element id = onetrust-accept-btn-handler
         # page.locator("#onetrust-accept-btn-handler").click()
         self.page.locator(type(self).cookies_accept_button_locator).click()
         self.page.wait_for_timeout(wait_time)
