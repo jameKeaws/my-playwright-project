@@ -17,7 +17,7 @@ with sync_playwright() as playwright:
     homepage = HomePage(page)
     # Navigate to website we want to test. For demonstration purposes we are using The Perth Mint
     homepage.navigate('https://www.perthmint.com/')
-    homepage.click_accept_cookies()
+    # homepage.click_accept_cookies()
     
     main_navigation = MainNavigation(page)
     main_navigation.load_default_homepage(wait_time=15000)
@@ -38,7 +38,9 @@ with sync_playwright() as playwright:
     # Close the 'Quick cart' after adding an item to the cart
     quick_cart = QuickCart(page)
     quick_cart.close_quick_cart(wait_time=3000)
-    product_details_page.use_plus_button(how_much_more_to_add=5,wait_time=5000)
+    product_details_page.use_plus_button(how_much_more_to_add=5, wait_time=5000)
+    quick_cart.close_quick_cart(wait_time=3000)
+    product_details_page.use_minus_button(how_much_to_subtract=4, wait_time=5000)
     
     # gracefully close up everything
     context.close()

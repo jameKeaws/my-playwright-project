@@ -16,14 +16,16 @@ class MainNavigation():
         print("MainNavigation - click_search_icon()")
         # We are locating by CSS selector where classes are as specified below
         # page.locator('.header__sub-nav-item.header__nav-item--search').click()
-        self.page.locator(type(self).search_icon_locator).click()
+        # self.page.locator(type(self).search_icon_locator).click()
+        self.page.get_by_role("button", name="Search").click()
         self.page.wait_for_timeout(wait_time)
         
     def input_search(self, value_to_search='James', wait_time=2000):
         print("MainNavigation - input_search()")
         # Below is how it was originally called without Page object model
         # page.locator('//*[@id="search-desktop"]/div/input').fill(value_to_search)
-        self.page.locator(type(self).search_text_field_locator).fill(value_to_search)
+        # self.page.locator(type(self).search_text_field_locator).fill(value_to_search)
+        self.page.get_by_role("textbox", name="What are you looking for?").fill(value_to_search)
         self.page.wait_for_timeout(wait_time)
         
     def click_search_bar_button(self, wait_time=5000):

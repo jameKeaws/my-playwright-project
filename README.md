@@ -19,11 +19,15 @@ Playwright basic configuration and setup with Python Language
         [Install all the different dependencies and package we need for Playwright]<br/>
     - [ ] playwright install
         [Install the browsers (e.g. Chromium, Firefox, Webkit) and libraries to record videos automatically.  We don't have to worry about the browser drivers not being in the correct path or place]<br/>
+    - [ ] pip install pytest-playwright 
+        [Install pytest]
 4) Test that you will be able to do a synchronous call using Playwright<br/>
     To run the sync.py file, just type in below command in your Visual Studio Code Terminal<br/>
         python sync.py<br/>
     OR<br/>
     Follow instructions from https://www.youtube.com/watch?v=FK_5SQPq6nY&list=PLYDwWPRvXB8_W56h2C1z5zrlnAlvqpJ6A
+
+5) Easy means for getting locators is playwright codegen website_url
 
 ### References
 https://playwright.dev/python/docs/api/class-playwright
