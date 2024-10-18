@@ -1,6 +1,7 @@
 # https://playwright.dev/python/docs/pom
 # https://stackoverflow.com/questions/25577578/can-i-access-a-class-variable-from-an-instance
 # https://pynative.com/python-class-variables/#:~:text=A%20class%20variable%20is%20declared,constructor%20method%20and%20other%20methods.
+# https://stackoverflow.com/questions/71975879/can-you-extend-playwright-page-python-sync
 
 class HomePage():
     cookies_accept_button_locator = '#onetrust-accept-btn-handler'

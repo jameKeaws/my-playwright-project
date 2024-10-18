@@ -48,3 +48,12 @@ https://stackoverflow.com/questions/21405267/how-to-use-regex-in-xpath-contains-
 ### For Future Exploration
 <!-- Behave with Playwright -->
 https://wikomtech.com/blog/create-a-behavior-driven-development-bdd-framework-with-playwright-and-python/
+
+### Async
+https://apidog.com/blog/await-in-playwright/
+https://jadala-ajay16.medium.com/why-do-we-write-await-async-in-playwright-javascript-typescript-fa3c92f82841
+https://blog.apify.com/python-asyncio-tutorial/
+https://blog.apify.com/python-playwright/
+
+### Page Object Model Async
+https://playwright.dev/python/docs/pom

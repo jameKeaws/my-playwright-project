@@ -59,10 +59,23 @@ class MainNavigation():
     # Functionality for reloading the default home page by clicking on company logo
     def load_default_homepage(self, wait_time=3000):
         print("MainNavigation - load_default_homepage()")
-        self.page.locator(type(self).logo_in_header_locator).click()
+        # self.page.locator(type(self).logo_in_header_locator).click()
+        self.page.get_by_role("link", name="The Perth Mint", exact=True).click()
+        self.page.wait_for_timeout(wait_time)
+        
+    def open_whats_new(self, wait_time=3000):
+        print("MainNavigation - open_whats_new()")
+        self.page.get_by_role("button", name="What’s new").click()
         self.page.wait_for_timeout(wait_time)
         
     def open_collector_coins_menu(self, wait_time=3000):
         print("MainNavigation - open_collector_coins_menu()")
         self.page.get_by_role("button", name=re.compile("^Collector coins", re.IGNORECASE)).click()
         self.page.wait_for_timeout(wait_time)
+        
+    def open_jewellery_and_gifts(self, wait_time=3000):
+        print("MainNavigation - open_jewellery_and_gifts()")
+        self.page.get_by_role("button", name="Jewellery and gifts").click()
+        self.page.wait_for_timeout(wait_time)
+        
+    

@@ -9,9 +9,12 @@ with sync_playwright() as playwright:
     chromium = playwright.chromium
     # Create a browser object which we could work with. By default the browser will be running headless = True
     browser = chromium.launch(headless=False, slow_mo=50, args=["--start-maximized"])
-    # Create a new page in a pristine context. Create a page object which we could interact with
-    # page = browser.new_page()
     # https://playwright.dev/python/docs/api/class-browser#browser-new-context
+    # Playwright uses browser contexts to achieve Test Isolation. 
+    # Each test has its own Browser Context. 
+    # Running the test creates a new browser context each time. 
+    # When using Playwright as a Test Runner, browser contexts are created by default. 
+    # Otherwise, you can create browser contexts manually.
     context = browser.new_context(no_viewport=True)
     page = context.new_page()
     homepage = HomePage(page)
